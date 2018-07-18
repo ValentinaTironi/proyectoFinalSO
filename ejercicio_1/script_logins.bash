@@ -3,9 +3,9 @@ read usuario
 
 user_exist=$(cat /etc/passwd | grep "$usuario")
 
-if [ -z "$usuario" ] || [ -z "$user_exist" ]
+	if [ -z "$usuario" ] || [ -z "$user_exist" ]
 then 
-	echo "EL USUARIO INGRESADO NO TIENE LOGS O NO EXISTE. 
+	echo "EL USUARIO "$usuario" NO EXISTE. 
        ******SE MUESTRAN LOS LOGS Y LOGINS DE TODOS LOS USUARIOS******"
 else 
 	echo "******LOGS Y LOGINS DEL USUARIO $usuario******"
