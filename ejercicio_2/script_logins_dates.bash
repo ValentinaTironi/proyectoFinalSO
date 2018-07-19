@@ -1,8 +1,8 @@
-echo "Inserte fecha de comienzo (YYYY-MMM-DD):"
+echo "Inserte fecha de comienzo (YYYY-MM-DD):"
 
 read fecha_desde
 
-echo "Inserte fecha de finalizacion (YYYY-MMM-DD):"
+echo "Inserte fecha de finalizacion (YYYY-MM-DD):"
 
 read fecha_hasta
 
@@ -14,6 +14,11 @@ elif [ -z "$fecha_desde" ]
 then
 	echo "** No se imgreso fecha de comienzo, se van a mostrar todos los registros hasta la fecha $fecha_hasta **"
 	last -t "$fecha_hasta"
+
+elif [ -n "$fecha_hasta" ] && [ -n "$fecha_desde" ]
+then
+	last -s "$fecha_desde" -t "$fecha_hasta"
+
 fi
 
 
