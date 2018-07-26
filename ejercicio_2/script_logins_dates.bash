@@ -30,10 +30,10 @@ then
 		do
 			last -f $file -s "$fecha_desde" -t "$fecha_hasta"
 		done)"
-		lol=$(echo "${last_command}" | grep 'reboot')
-		if [ -z "$lol" ]
+		register=$(echo "${last_command}" | grep 'reboot')
+		if [ -z "$register" ]
 		then
-			echo "Todo mal"
+			echo "No hay registros entre la fechas $fecha_desde y $fecha_hasta"
 		else
 			echo "$last_command"
 			echo "todo bien"
