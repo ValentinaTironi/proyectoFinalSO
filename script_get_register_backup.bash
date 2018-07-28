@@ -1,3 +1,5 @@
+source ./script_register_queries.bash
+
 if [ -s /var/log/mis_respaldos.txt ]
 then
 	echo "***Registros de respaldos creados***"
@@ -10,3 +12,4 @@ else
 	echo "No hay registro de respaldos creados"
 fi
 
+registerQuery "script_get_register_backup"

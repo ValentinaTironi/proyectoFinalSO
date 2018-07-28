@@ -1,3 +1,5 @@
+source ./script_register_queries.bash
+
 echo "Inserte fecha de comienzo (YYYY-MM-DD):"
 
 read fecha_desde
@@ -35,11 +37,12 @@ then
 		then
 			echo "No hay registros entre la fechas $fecha_desde y $fecha_hasta"
 		else
+			echo "** Se muestran los registros entre la fecha $fecha_desde y $fecha_hasta **"
 			echo "$last_command"
-			echo "todo bien"
 		fi	
 	else
 		echo "No es posible mostrar ningun registro dado a que ha ingresado incorrecamente las fechas requeridas"
 	fi
 fi
 
+registerQuery "script_logins_dates"

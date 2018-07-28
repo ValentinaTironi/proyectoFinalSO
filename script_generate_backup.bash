@@ -1,3 +1,4 @@
+source ./script_register_queries.bash
 
 respaldos_path="/media/sf_shared_host_folder/respaldos"
 
@@ -20,3 +21,5 @@ else
 	echo "error - $current_date $current_time - error_respaldo_$current_date"  >> /var/log/mis_respaldos.txt
 	mv $respaldos_path/respaldo_$current_date.tar.gz $respaldos_path/error_respaldo_$current_date.tar.gz
 fi	
+
+registerQuery "script_generate_backup"

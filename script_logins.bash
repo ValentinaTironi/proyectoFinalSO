@@ -1,3 +1,5 @@
+source ./script_register_queries.bash
+
 echo "Ingrese el nombre del usuario: "
 read usuario
 
@@ -24,3 +26,5 @@ do
 		}
 	}'
 done
+
+registerQuery "script_logins"
