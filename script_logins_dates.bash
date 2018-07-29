@@ -9,20 +9,27 @@ echo "Inserte fecha de finalizacion (YYYY-MM-DD):"
 read fecha_hasta
 
 files=$(find /var/log/ | grep  wtmp)
-if [ -z "$fecha_hasta" ] && [ ! -z "$fecha_desde" ]
+if [ -z "$fecha_hasta" ] && [ -n "$fecha_desde" ]
 then 
 	echo "** No se ingreso fecha de finalizacion, se van a mostrar todos los registros desde la fecha $fecha_desde hasta el dia de hoy **"	
 	for file in $files
 	do
 		last -f $file -s "$fecha_desde"
 	done
-elif [ -z "$fecha_desde" ] && [ ! -z "$fecha_hasta" ]
+elif [ -z "$fecha_desde" ] && [ -n "$fecha_hasta" ]
 then
 	echo "** No se ingreso fecha de comienzo, se van a mostrar todos los registros hasta la fecha $fecha_hasta **"
 	last -t "$fecha_hasta"
 	for file in $files
 	do
 		last -f $file -s "$fecha_hasta"
+	done
+elif [ -z "$fecha_hasta" ] && [ -z "$fecha_desde" ]
+then 
+	echo "** No ingreso ninguna fecha, se van a mostrar todos los registros **"
+	for file in $files
+	do
+		last
 	done
 elif [ -n "$fecha_hasta" ] && [ -n "$fecha_desde" ]
 then
