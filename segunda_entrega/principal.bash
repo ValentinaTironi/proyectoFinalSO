@@ -1,3 +1,7 @@
+#!/bin/bash
+
+source ./config_backup.bash
+
 echo Selecciona una de las siguientes opciones:
 
 echo "
