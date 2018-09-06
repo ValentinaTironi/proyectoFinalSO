@@ -1,6 +1,15 @@
 #!/bin/bash
 
-#function configurar_cron {
+function change_value_if_empty {
+	if [ -z $1 ]
+	then
+		echo "*"
+	else
+		echo $1
+	fi
+}
+
+function configurar_cron {
 	text="que se va a ejecutar la tarea"
 	echo "*** Los valores a ingresar en las siguientes opciones deben ser numericos ***"
 
@@ -21,13 +30,12 @@
 
 	echo Ingrese el comando que dese programar
 	read comando
+
+	hora=$(change_value_if_empty $hora)
+	minutos=$(change_value_if_empty $minutos)
+	dia_mes=$(change_value_if_empty $dia_mes)
+	mes=$(change_value_if_empty $mes)
+	dia_semana=$(change_value_if_empty $dia_semana)
 	
-	variables=($hora $minutos $dia_mes $mes $dia_semana)
-	for ((i=0; i<${$variables[*]}; i++)); do
-		if [ -z $variables[$i] ]
-		then
-			$variables[$i]="*"
-		fi
-		echo $variables[$i]
-	done
-#}
+	echo "$hora $minutos $dia_mes $mes $dia_semana $USER $comando" >> /etc/crontab
+}
