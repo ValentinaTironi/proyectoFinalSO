@@ -5,7 +5,7 @@ function configurar_backup {
 	mkdir -p $ruta_respaldo
 
 	echo Ingrese la ruta absoluta del $1
-	read archivo
+	read -e archivo
 
 	echo Ingrese el nombre que le quiere poner al $1 de respaldo:
 	read nombre_archivo
