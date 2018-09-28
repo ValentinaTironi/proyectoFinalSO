@@ -36,6 +36,21 @@ function configurar_cron {
 	dia_mes=$(change_value_if_empty $dia_mes)
 	mes=$(change_value_if_empty $mes)
 	dia_semana=$(change_value_if_empty $dia_semana)
+
+	crontab -l > last_crontab
+
+	echo "$hora $minutos $dia_mes $mes $dia_semana $USER $comando" >> last_crontab
+
+	crontab last_crontab
+
+	status=$(echo $?)
 	
-	echo "$hora $minutos $dia_mes $mes $dia_semana $USER $comando" >> /etc/crontab
+	if [ "$status" = "0" ]
+	then
+		echo "Tarea creada con éxito."
+	else
+		echo "Ha ocurrido un error, vuelve a intentarlo."
+	fi
+	rm last_crontab
+
 }
