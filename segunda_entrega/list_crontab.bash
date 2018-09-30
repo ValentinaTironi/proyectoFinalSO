@@ -1,11 +1,13 @@
 #!/bin/bash
 
 function list_crontab {
-	crontab="/etc/crontab"
-	if [ -f  $crontab ]
+	echo "***Se lista el crontab del usuario $USER***"
+
+	crontab -l
+	status=$(echo $?)
+
+	if [ "$status" != "0" ]
 	then
-		cat $crontab
-	else
-		echo "No existe el archivo $cronta"
+		echo "Algo salio mal, vuelva a intentarlo."
 	fi
 }
