@@ -24,6 +24,7 @@ function salir {
 }
 
 function main {
+	clear
 	while true; do
 		echo Selecciona una de las siguientes opciones:
 
