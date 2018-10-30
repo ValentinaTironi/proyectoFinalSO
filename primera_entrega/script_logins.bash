@@ -14,7 +14,7 @@ else
 fi
 
 files=$(find /var/log/ | grep wtmp)
-
+touch logs_client
 for file in $files 
 do
 
@@ -24,7 +24,15 @@ do
 		} else if (usuario == $1) {
 			print $0
 		}
-	}'
+	}' >> logs_client
 done
+	if [ -s logs_client ]
+	then
+		cat logs_client
+	else
+		echo "*****No se encuentran registros para el usuario $usuario*****"
+
+	fi
+	rm logs_client
 
 registerQuery "script_logins"
