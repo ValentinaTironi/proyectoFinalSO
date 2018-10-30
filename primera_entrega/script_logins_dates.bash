@@ -22,7 +22,7 @@ then
 	last -t "$fecha_hasta"
 	for file in $files
 	do
-		last -f $file -s "$fecha_hasta"
+		last -f $file -t "$fecha_hasta"
 	done
 elif [ -z "$fecha_hasta" ] && [ -z "$fecha_desde" ]
 then 

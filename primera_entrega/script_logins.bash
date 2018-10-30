@@ -8,9 +8,9 @@ user_exist=$(cat /etc/passwd | grep "$usuario")
 	if [ -z "$usuario" ] || [ -z "$user_exist" ]
 then 
 	echo "EL USUARIO "$usuario" NO EXISTE. 
-       ******SE MUESTRAN LOS LOGS Y LOGINS DE TODOS LOS USUARIOS******"
+       ******SE MUESTRAN LOS LOGIN Y LOGOUT DE TODOS LOS USUARIOS******"
 else 
-	echo "******LOGS Y LOGINS DEL USUARIO $usuario******"
+	echo "******FECHA Y HORA DE LOGIN Y LOGOUT DEL USUARIO $usuario******"
 fi
 
 files=$(find /var/log/ | grep wtmp)
