@@ -13,7 +13,7 @@ function configurar_backup {
 	echo "¿Desea comprimir o empaquetar el $1 a respaldar? (c/e)"
 	read respuesta
 	
-	if [ -f "$archivo" ]
+	if [ -f "$archivo" || -d "$archivo" ]
 	then
 		if [ $respuesta = "c" ]
 		then

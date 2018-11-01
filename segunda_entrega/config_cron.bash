@@ -27,7 +27,7 @@ function configurar_cron {
 	echo -n "Ingrese los minutos en los $text (00-59): " 
 	read minutos
 
-	minutos=$(valid_value 59 $hora)
+	minutos=$(valid_value 59 $minutos)
 	while [ "$minutos" = "invalid" ]
 	do
 		echo -n "$invalid_value"
